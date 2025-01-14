@@ -39,8 +39,12 @@ public class Main extends Application {
 		launch();
 	}
 
+	private Stage primaryStage;
+
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage2) throws Exception {
+
+		primaryStage = primaryStage2;
 
 		var serverUtils = INJECTOR.getInstance(ServerUtils.class);
 		if (!serverUtils.isServerAvailable()) {
@@ -49,16 +53,18 @@ public class Main extends Application {
 			return;
 		}
 
-		var user = FXML.load(UserSceneController.class, "client", "scenes", "UserScene.fxml");
-		var menu = FXML.load(MainMenuSceneController.class, "client", "scenes", "MainMenuScene.fxml");
-
-		var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
-		mainCtrl.initialize(primaryStage, user);
+		MainCtrl mainCtrl = new MainCtrl();
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("scenes/UserScene.fxml"));
 		Parent root = loader.load();
 		UserSceneController controller = loader.getController();
+		controller.setMainCtrl(mainCtrl);
+
+		mainCtrl.initialize(primaryStage, root);
+
+
 
 		primaryStage.setOnCloseRequest(event -> {System.out.println("System is closing");});
+
 	}
 }

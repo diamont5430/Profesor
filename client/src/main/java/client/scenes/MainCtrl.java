@@ -15,33 +15,36 @@
  */
 package client.scenes;
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
+import java.io.IOException;
+
 public class MainCtrl {
 
     private Stage primaryStage;
 
-    private UserSceneController userSceneController;
-    private Scene overview;
-
-    public void initialize(Stage primaryStage, Pair<UserSceneController, Parent> overview) {
+    public void initialize(Stage primaryStage, Parent overview) {
         this.primaryStage = primaryStage;
-        this.userSceneController = overview.getKey();
-        this.overview = new Scene(overview.getValue());
+        if(overview != null) {
+            this.primaryStage.setScene(new Scene(overview));
+            this.primaryStage.show();
+        }
 
-        showOverview();
-        primaryStage.show();
     }
 
-    public void showOverview() {
-        primaryStage.setTitle("Quotes: Overview");
-        primaryStage.setScene(overview);
-    }
 
-    public void showAdd() {
-        primaryStage.setTitle("Quotes: Adding Quote");
+    public void switchScene(String path){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/client.scenes/MainMenuScene.fxml"));
+            Parent newScene = loader.load();
+            primaryStage.setScene(new Scene(newScene));
+            primaryStage.show();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 }
