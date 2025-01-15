@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -29,10 +29,10 @@
           </Menu>
         </menus>
       </MenuBar>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="393.0" prefWidth="600.0">
          <children>
             <Text fx:id="username" layoutX="469.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="98.80341339111328" />
-            <ListView prefHeight="286.0" prefWidth="128.0" />
+            <Button fx:id="randomtenBUtton" layoutX="234.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleRandomTen" text="Learn with random 10" />
          </children></AnchorPane>
    </children>
 </VBox>

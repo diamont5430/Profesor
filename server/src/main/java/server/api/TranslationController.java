@@ -1,6 +1,8 @@
 package server.api;
 
 import commons.Translation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import server.database.TranslationRepository;
@@ -14,12 +16,14 @@ import java.util.Optional;
 @RequestMapping("/api/translation")
 public class TranslationController {
 
+    @Autowired
     private TranslationRepository translationRepository;
 
     @PostMapping
     @ResponseBody
-    public void createTranslation(@RequestBody Translation translation) {
-        translationRepository.save(translation);
+    public ResponseEntity<Translation> createTranslation(@RequestBody Translation translation) {
+        Translation savedTranslation = translationRepository.save(translation);
+        return ResponseEntity.ok(savedTranslation);
     }
 
     @GetMapping
