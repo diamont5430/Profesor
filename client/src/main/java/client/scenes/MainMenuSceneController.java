@@ -8,10 +8,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 import org.springframework.web.client.RestTemplate;
 
-import javax.swing.text.TableView;
 import javax.swing.text.html.ListView;
 import java.util.*;
 
@@ -24,7 +24,7 @@ public class MainMenuSceneController {
     private Button randomtenButton;
 
     @FXML
-    private TableView collectionTable;
+    private TableView<Collection> collectionTable;
 
     @FXML
     private Button createCollectionButton;
