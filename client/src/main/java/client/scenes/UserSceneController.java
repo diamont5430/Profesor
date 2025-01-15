@@ -53,7 +53,7 @@ public class UserSceneController {
         String color = this.colorPicker.getValue().toString();
         color = "#"+ color.substring(2,color.length()-2);
 
-        vbox.setStyle("-fx-background-color: "+color);
+        //vbox.setStyle("-fx-background-color: "+color);
 
         if(check) {
             appUser user = new appUser(username,password,color);
@@ -66,12 +66,11 @@ public class UserSceneController {
             if(user != null) {
                 appUser = user;
                 System.out.println(appUser.getUsername() + "   " + appUser.getPassword());
-                mainCtrl.switchScene("src/main/resources/client/scenes/MainMenuScene.fxml");
+                mainCtrl.switchScene("/client/scenes/MainMenuScene.fxml");
             }else{
                 System.out.println("User not found");
             }
         }
-        System.out.println("username: " + username + " password: " + password);
     }
 
     @FXML

@@ -19,7 +19,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.util.Pair;
 
 import java.io.IOException;
 
@@ -39,9 +38,12 @@ public class MainCtrl {
 
     public void switchScene(String path){
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/client.scenes/MainMenuScene.fxml"));
-            Parent newScene = loader.load();
-            primaryStage.setScene(new Scene(newScene));
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(path));
+
+            Scene scene = new Scene(loader.load());
+
+            primaryStage.setScene(scene);
             primaryStage.show();
         }catch(IOException e){
             e.printStackTrace();

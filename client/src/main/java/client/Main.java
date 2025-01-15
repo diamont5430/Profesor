@@ -55,6 +55,7 @@ public class Main extends Application {
 
 		MainCtrl mainCtrl = new MainCtrl();
 
+		//FXMLLoader loader = new FXMLLoader(getClass().getResource("scenes/MainMenuScene.fxml"));
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("scenes/UserScene.fxml"));
 		Parent root = loader.load();
 		UserSceneController controller = loader.getController();
