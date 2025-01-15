@@ -15,8 +15,8 @@ public class Translation {
     public long id;
 
 
-    public String textInFirstLanguage;
-    public String textInSecondLanguage;
+    private String textInFirstLanguage;
+    private String textInSecondLanguage;
 
     public Translation(String textInFirstLanguage, String textInSecondLanguage) {
         this.textInFirstLanguage = textInFirstLanguage;
