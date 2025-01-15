@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
+import java.util.Objects;
+
 @Entity
 public class Translation {
 
@@ -44,5 +46,14 @@ public class Translation {
 
     public Long getId() {
         return id;
+    }
+
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Translation that = (Translation) o;
+        if(this.id != that.id) return false;
+        if (!Objects.equals(textInFirstLanguage, that.textInFirstLanguage)) return false;
+        return Objects.equals(textInSecondLanguage, that.textInSecondLanguage);
     }
 }

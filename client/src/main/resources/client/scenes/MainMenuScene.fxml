@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -30,7 +31,8 @@
       </MenuBar>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Text fx:id="username" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="98.80341339111328" />
+            <Text fx:id="username" layoutX="469.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="98.80341339111328" />
+            <ListView prefHeight="286.0" prefWidth="128.0" />
          </children></AnchorPane>
    </children>
 </VBox>
