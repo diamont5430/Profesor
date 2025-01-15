@@ -9,7 +9,6 @@ import server.database.TranslationRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -28,8 +27,8 @@ public class TranslationController {
 
     @GetMapping
     @ResponseBody
-    public List<Translation> getAllTranslations() {
-        return translationRepository.findAll();
+    public Translation[] getAllTranslations() {
+        return translationRepository.findAll().toArray(new Translation[0]);
     }
 
     @DeleteMapping

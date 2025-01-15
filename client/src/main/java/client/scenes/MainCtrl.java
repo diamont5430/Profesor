@@ -15,6 +15,7 @@
  */
 package client.scenes;
 
+import commons.Translation;
 import commons.appUser;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class MainCtrl {
 
@@ -49,6 +51,7 @@ public class MainCtrl {
 
             MainMenuSceneController controller = loader.getController();
             controller.setData(this.user);
+            controller.setMainCtrl(this);
 
             Scene scene = new Scene(root);
 
@@ -57,6 +60,26 @@ public class MainCtrl {
 
         }catch(IOException e){
             e.printStackTrace();
+        }
+    }
+
+    public void switchToGameScene(String path, appUser user2, List<Translation> lista) {
+        try{
+            this.user = user2;
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(path));
+
+            Parent root = loader.load();
+            GameSceneController controller = loader.getController();
+            controller.setData(this.user, lista);
+            controller.setMainCtrl(this);
+
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
