@@ -21,6 +21,9 @@ public class GameSceneController {
     @FXML
     private TextField dutchInput;
 
+    @FXML
+    private Text scoreResult;
+
     int i;
     int points;
 
@@ -34,6 +37,7 @@ public class GameSceneController {
         polishField.setText("Polish");
         i = 0;
         points = 0;
+        scoreResult.setText("Score: " + points);
     }
 
     public void setMainCtrl(MainCtrl mainCtrl) {
@@ -59,8 +63,12 @@ public class GameSceneController {
         }else{
             System.out.println("You got it wrong!!");
         }
+        scoreResult.setText("Score: " + points);
         if(i<9){
             polishField.setText(translationList.get(i+1).getTextInFirstLanguage());
+        }
+        if(i ==  9) {
+            mainCtrl.switchScene("/client/scenes/MainMenuScene.fxml", currentUser);
         }
         i++;
     }

@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
@@ -33,6 +35,14 @@
          <children>
             <Text fx:id="username" layoutX="469.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="98.80341339111328" />
             <Button fx:id="randomtenBUtton" layoutX="234.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleRandomTen" text="Learn with random 10" />
+            <TableView fx:id="collectionTable" prefHeight="269.0" prefWidth="155.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+            <Button fx:id="createCOllectionButton" layoutY="270.0" mnemonicParsing="false" onAction="#handleCreateCollection" prefHeight="49.0" prefWidth="73.0" text="+" />
+            <Button fx:id="deleteCollectionButton" layoutX="81.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleDeleteCollection" prefHeight="49.0" prefWidth="73.0" text="-" />
          </children></AnchorPane>
    </children>
 </VBox>

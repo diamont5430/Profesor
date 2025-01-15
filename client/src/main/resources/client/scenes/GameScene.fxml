@@ -40,6 +40,11 @@
                   <Font size="32.0" />
                </font>
             </Text>
+            <Text fx:id="scoreResult" layoutX="495.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="62.8033447265625">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
          </children></AnchorPane>
     </children>
 </VBox>

@@ -11,11 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import org.springframework.web.client.RestTemplate;
 
+import javax.swing.text.TableView;
 import javax.swing.text.html.ListView;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class MainMenuSceneController {
 
@@ -24,6 +22,15 @@ public class MainMenuSceneController {
 
     @FXML
     private Button randomtenButton;
+
+    @FXML
+    private TableView collectionTable;
+
+    @FXML
+    private Button createCollectionButton;
+
+    @FXML
+    private Button deleteCollectionButton;
 
     private MainCtrl mainCtrl;
 
@@ -45,6 +52,8 @@ public class MainMenuSceneController {
     public void handleRandomTen(){
         List<Translation> translations = getAllTranslations();
 
+        translations = getXRandomTranslations(translations, 10);
+
         mainCtrl.switchToGameScene("/client/scenes/GameScene.fxml", currentUser, translations);
     }
 
@@ -55,6 +64,25 @@ public class MainMenuSceneController {
         Translation[] translations1 =  restTemplate.getForObject("http://localhost:8080/api/translation", Translation[].class);
         assert translations1 != null;
         return Arrays.stream(translations1).toList();
+    }
+
+    public List<Translation> getXRandomTranslations(List<Translation> translations, int x){
+        Random rand = new Random();
+        List<Translation> translations1 = new ArrayList<>();
+        for(int i=0; i<x; i++){
+            int randomIndex = rand.nextInt(translations.size());
+            Translation translation = translations.get(randomIndex);
+            translations1.add(translation);
+        }
+        return translations1;
+    }
+
+    public void handleCreateCollection(){
+
+    }
+
+    public void handleDeleteCollection(){
+
     }
 
 
