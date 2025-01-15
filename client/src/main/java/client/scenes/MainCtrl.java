@@ -15,6 +15,7 @@
  */
 package client.scenes;
 
+import commons.appUser;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,6 +27,8 @@ public class MainCtrl {
 
     private Stage primaryStage;
 
+    private appUser user;
+
     public void initialize(Stage primaryStage, Parent overview) {
         this.primaryStage = primaryStage;
         if(overview != null) {
@@ -36,17 +39,28 @@ public class MainCtrl {
     }
 
 
-    public void switchScene(String path){
+    public void switchScene(String path, appUser user2) {
         try{
+            this.user = user2;
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(path));
 
-            Scene scene = new Scene(loader.load());
+            Parent root = loader.load();
+
+            MainMenuSceneController controller = loader.getController();
+            controller.setData(this.user);
+
+            Scene scene = new Scene(root);
 
             primaryStage.setScene(scene);
             primaryStage.show();
+
         }catch(IOException e){
             e.printStackTrace();
         }
+    }
+
+    public appUser getUser() {
+        return user;
     }
 }

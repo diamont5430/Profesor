@@ -5,6 +5,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.MainMenuSceneController">
    <children>
@@ -27,6 +28,9 @@
           </Menu>
         </menus>
       </MenuBar>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Text fx:id="username" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="98.80341339111328" />
+         </children></AnchorPane>
    </children>
 </VBox>

@@ -66,7 +66,7 @@ public class UserSceneController {
             if(user != null) {
                 appUser = user;
                 System.out.println(appUser.getUsername() + "   " + appUser.getPassword());
-                mainCtrl.switchScene("/client/scenes/MainMenuScene.fxml");
+                mainCtrl.switchScene("/client/scenes/MainMenuScene.fxml", appUser);
             }else{
                 System.out.println("User not found");
             }
