@@ -5,12 +5,16 @@ import commons.appUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameSceneController {
+
+    @FXML
+    private Text correctAnswer;
 
     @FXML
     private Text polishField;
@@ -26,6 +30,7 @@ public class GameSceneController {
 
     int i;
     int points;
+    int a = 1;
 
     private MainCtrl mainCtrl;
 
@@ -38,6 +43,14 @@ public class GameSceneController {
         i = 0;
         points = 0;
         scoreResult.setText("Score: " + points);
+
+        correctAnswer.setText("");
+
+        dutchInput.setOnKeyPressed(e -> {
+            if(e.getCode() == KeyCode.ENTER){
+                handleGuess();
+            }
+        });
     }
 
     public void setMainCtrl(MainCtrl mainCtrl) {
@@ -53,24 +66,30 @@ public class GameSceneController {
     }
 
     public void handleGuess(){
-        String userInput = dutchInput.getText();
-        String desiredInput = translationList.get(i).getTextInSecondLanguage();
+        if(a == 0){
+            String userInput = dutchInput.getText();
+            String desiredInput = translationList.get(i).getTextInSecondLanguage();
 
-        if(userInput.equals(desiredInput)){
-            points++;
-            System.out.println(points);
-            System.out.println("You got it right!!");
+            if(userInput.equals(desiredInput)){
+                points++;
+                System.out.println(points);
+                System.out.println("You got it right!!");
+            }else{
+                System.out.println("You got it wrong!!");
+            }
+            correctAnswer.setText("");
+            if(i<9){
+                polishField.setText(translationList.get(i+1).getTextInFirstLanguage());
+            }
+            if(i ==  9) {
+                mainCtrl.switchScene("/client/scenes/MainMenuScene.fxml", currentUser);
+            }
+            i++;
+            a = 1;
         }else{
-            System.out.println("You got it wrong!!");
+            a = 0;
+            correctAnswer.setText(translationList.get(i).getTextInSecondLanguage());
         }
-        scoreResult.setText("Score: " + points);
-        if(i<9){
-            polishField.setText(translationList.get(i+1).getTextInFirstLanguage());
-        }
-        if(i ==  9) {
-            mainCtrl.switchScene("/client/scenes/MainMenuScene.fxml", currentUser);
-        }
-        i++;
     }
 
 

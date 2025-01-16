@@ -34,7 +34,7 @@
         <AnchorPane prefHeight="393.0" prefWidth="600.0">
          <children>
             <Button fx:id="guessButton" layoutX="376.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleGuess" text="Guess" />
-            <TextField fx:id="dutchInput" layoutX="217.0" layoutY="205.0" />
+            <TextField fx:id="dutchInput" layoutX="217.0" layoutY="205.0" onKeyPressed="#handleGuess" />
             <Text fx:id="polishField" layoutX="246.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="107.99995930989598">
                <font>
                   <Font size="32.0" />
@@ -45,6 +45,7 @@
                   <Font size="16.0" />
                </font>
             </Text>
+            <Text fx:id="correctAnswer" layoutX="252.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="96.80340576171875" />
          </children></AnchorPane>
     </children>
 </VBox>
