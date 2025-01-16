@@ -1,6 +1,7 @@
 package server.api;
 
 import commons.Collection;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import server.database.CollectionRepository;
@@ -11,6 +12,7 @@ import java.util.List;
 @RequestMapping("/api/collections")
 public class CollectionController {
 
+    @Autowired
     private CollectionRepository collectionRepository;
 
     @GetMapping

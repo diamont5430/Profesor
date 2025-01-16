@@ -1,12 +1,10 @@
 package commons;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Entity
@@ -16,8 +14,8 @@ public class Collection {
     @GeneratedValue
     private long id;
 
-    @JsonManagedReference
     @OneToMany
+    @JsonManagedReference
     private List<Translation> translations = new ArrayList<>();
 
     private boolean isPublic;
@@ -29,6 +27,12 @@ public class Collection {
     private String secondLanguage;
 
     public Collection() {
+    }
+
+    public Collection(String creator,String firstLanguage, String secondLanguage) {
+        this.creator = creator;
+        this.firstLanguage = firstLanguage;
+        this.secondLanguage = secondLanguage;
     }
 
     public Collection(boolean isPublic, String creator, String firstLanguage, String secondLanguage) {

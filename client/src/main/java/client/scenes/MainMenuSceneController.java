@@ -10,6 +10,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
 import javax.swing.text.html.ListView;
@@ -78,7 +81,11 @@ public class MainMenuSceneController {
     }
 
     public void handleCreateCollection(){
+        RestTemplate restTemplate = new RestTemplate();
 
+        List<Collection> collections = restTemplate.getForObject("http://localhost:8080/api/collections", List.class);
+        assert collections != null;
+        System.out.println(collections.size());
     }
 
     public void handleDeleteCollection(){
